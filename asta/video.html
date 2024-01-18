@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebibebibesday</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style1.css">
+    <script src="vendor/confetti/confetti.js"></script>
+</head>
+
+<body>
+    <div id="today">
+       <div class="d-flex flex-column justify-content-center align-items-center">
+            <span class="text-white text-center happy">Happy Birthday</span>
+            <span class="text-white text-center birth">Asttaaaa</span>
+        </div>    
+    </div>
+    <div id="candle-group">
+        <h1>
+            Buatlah Permintaan <br /> Dan klik api lilinya wkwk</h1>
+        <div class="glow" id="glow"></div>
+        <div id="candle">
+            <div class="stripe"></div>
+            <div class="stripe"></div>
+            <div class="stripe"></div>
+            <div class="stripe"></div>
+            <div class="stripe"></div>
+            <div id="top">
+                <div class="smoke"></div>
+                <div class="smoke"></div>
+                <div class="smoke"></div>
+                <div id="knot"></div>
+                <div class="burn" id="flame" onclick="blow();"></div>
+            </div>
+        </div>
+    </div>
+    <div id="present" class="container">
+        <div id="alerts" class="alert alert-primary fixed-alert mt-3" style="width:50vw" role="alert">
+            alert
+        </div>
+        <div class="card fixed-center-card w-50">
+            <div class="card-body">
+                <div class="row flex-column align-items-center">
+                    <div class="fs-4 col text-center">
+                        Siap dengan hadiahnya?
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col text-center mt-1">
+                            <a href="#" class="fs-5 btn btn-success btn-sm btn-width" id="yes" onclick="yes()">Siap!!!</a>
+                        </div>
+                        <div class="col text-center mt-1">
+                            <a href="#" class="fs-5 btn btn-danger btn-sm btn-width" id="no" onclick="no()">Gk usah</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="greeting" class="container navbar fixed-top">
+    <div class="card fixed-center-card w-50">
+            <div class="card-body">
+                <div class="row flex-column align-items-center">
+                    <div class="fs-4 col text-center">
+                        Siap dengan hadiahnya?
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col text-center mt-1">
+                            <a href="awal.html" class="fs-5 btn btn-success btn-sm btn-width" id="yes" () >Lets Go !!!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar fixed-bottom">
+        <div class="container justify-content-center">
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary mb-5" id="turn-on" onclick="showCandle()">Hidupkan Lampu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var i = 0;
+        var j = 0;
+        function yes() {
+            var yes = $("#yes")
+            var no = $("#no")
+            if (yes.text() == "Mau") {
+                $("#yes").text("Gk usah")
+                $("#no").text("Mau")
+                $("#yes").removeClass("btn-success")
+                $("#no").removeClass("btn-danger")
+                $("#yes").addClass("btn-danger")
+                $("#no").addClass("btn-success")
+                yes.attr("onclick", "no();")
+                no.attr("onclick", "yes();")
+            } else {
+            }
+            j++;
+            if (j == 1) {
+                $('#alerts').text("Siap!!!.. LETS GOOOO")
+                $('#alerts').fadeIn("slow")
+                $('#alerts').delay(500).fadeOut("slow")
+            }
+            if (j == 2) {
+                $("#present").delay(50).fadeOut('slow');
+                $("#greeting").delay(50).fadeIn('slow');
+                $("body").load(startConfetti())
+            }
+        }
+        function no() {
+            if (i == 0) {
+                $('#alerts').text("Kok gk mau?")
+                $('#alerts').fadeIn("slow")
+                $('#alerts').delay(500).fadeOut("slow")
+                i++;
+            } else if (i == 1) {
+                $('#alerts').text("Ihh kok gk mau sih?")
+                $('#alerts').fadeIn("slow")
+                $('#alerts').delay(500).fadeOut("slow")
+                i++;
+            } else {
+                $('#alerts').text("Yaudah kukasih ke orang lain aja")
+                $('#alerts').fadeIn("slow")
+                $('#alerts').delay(500).fadeOut("slow")
+            }
+        }
+        function showCandle() {
+            $("#turn-on").fadeOut('slow');
+            $("body").addClass("light");
+            $("#today").delay(1000).fadeIn('slow');
+            $("#candle-group").delay(1000).fadeIn('slow');
+
+        }
+        function blow() {
+            $("#flame").removeClass("burn").addClass("puff");
+            $(".smoke").each(function () {
+                $(this).addClass("puff-bubble");
+            });
+            $("#glow").remove();
+            $("h1").hide().html("Semoga <b>Permintaan nya </b> terwujud").delay(750).fadeIn(300);
+            $("#candle").animate(
+                {
+                    opacity: ".5",
+                },
+                100
+            );
+            $("#today").delay(2000).fadeOut('slow');
+            $("#greeting").delay(2000).fadeOut('slow');
+            $("#candle").delay(2000).fadeOut('slow');
+            $("h1").delay(1000).fadeOut('slow');
+            $("#present").delay(3000).fadeIn("slow")
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</body>
+
+</html>
